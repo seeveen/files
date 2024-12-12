@@ -1,0 +1,39 @@
+/* 
+    Copyright ©️ 2024 - dehohification.css
+    - Writtened by https://github.com/seeveen
+    - version 0.1
+    - MIT License
+    - 12 December 2024
+*/
+
+/* !~~ Disable all hoh ~~! */
+[class*="hoh"] {
+    display: none !important;
+}
+
+/* !~~ disable high contrast dark mode ~~! */
+.theme-preview.dark-contrast {
+  display: none !important;
+}
+
+/* !~~ site layout back to standart ~~! */
+.user .overview {
+  grid-template-columns: calc(45% - 40px) 55% !important;
+}
+
+/* !~~ reposition links ~~! */
+.footer .links {
+  margin-left: auto;
+  transform: unset;
+}
+
+/* !~~ Default list manga color ~~! */
+.activity-manga_list > div > div > div > div > .title,
+.hohPinned .list .title[href^="/manga/"] {
+  color: rgb(var(--color-blue)) !important;
+}
+
+/* !~~ Disable icons */
+.footer a::before {
+  display: none !important;
+}
