@@ -1,0 +1,93 @@
+/* 
+    Copyright © 2024 - spotify.css
+    - Written by https://github.com/seeveen
+    - version 0.1
+    - MIT License
+    - 12 December 2024
+*/
+
+:root {
+    --spotify-border: 2px rgba(163, 177, 198, 1) solid;
+    --spotify-background: rgba(24, 36, 55, 1);
+    --spotify-api-url: url(https://spotify-github-profile.kittinanx.com/api/view?uid=31mn6bq6p4ipe5famdlblflhlt7a&cover_image=true&theme=natemoo-re&show_offline=true&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=true);
+    --spotify-logo-color: rgb(133, 150, 165);
+}
+
+.section > div:nth-child(3) > h2 {
+    font-size: 0;
+    color: transparent;
+}
+
+.section > div:nth-child(3) > h2:before {
+    content: "Listening to Spotify" !important;
+    font-family: 'Overpass';
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: rgb(var(--color-text));
+    display: inline-block;
+}
+
+.percentage-bar,
+.genres > div:not(:first-child) {
+    display: none !important;
+}
+
+.genres .amount {
+    display: none;
+}
+
+.genres > div:first-child > .name {
+    padding: 0 !important;
+    height: 0 !important;
+    font-size: 0 !important;
+}
+
+.genres > div:first-child:before {
+    content: '';
+    height: 100px;
+    width: 330px;
+    display: inline-block;
+    z-index: 3;
+    border: var(--spotify-border);
+    border-radius: 2px;
+    transform: scale(1.2);
+    padding-top: 3px;
+    margin-top: 11px;
+    background: var(--spotify-background) !important;
+}
+
+.genres > div:first-child:after {
+    content: var(--spotify-api-url);
+    transform: scale(1.2);
+    display: inline-block;
+    position: absolute;
+    background: var(--spotify-background) !important;
+    margin-left: -157px;
+    margin-top: -106px;
+    z-index: 2;
+}
+
+.genres:after {
+    content: '';
+    mask: url("https://files.catbox.moe/s2558l.svg") no-repeat 50% 50%;
+    -webkit-mask: url("https://files.catbox.moe/s2558l.svg") no-repeat 50% 50%;
+    position: absolute;
+    padding: 60px 67px;
+    background-color: var(--spotify-logo-color) !important;
+    box-shadow: 4px 7px 0px 0px rgba(0,0,0,0.1);
+    margin-left: 297px;
+    margin-top: -35px;
+    overflow: overlay;
+    transform: scale(0.3);
+    z-index: 7;
+    animation: rotation 3s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: scale(0.3) rotate(0deg);
+    }
+    100% {
+        transform: scale(0.3) rotate(360deg);
+    }
+}
