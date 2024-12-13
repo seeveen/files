@@ -7,7 +7,7 @@
 */
 
 /* !~~ Disable all hoh ~~! */
-[class*="hoh"] {
+[class*="hoh"]:not(.hohHandledLike) {
     display: none !important;
 }
 
