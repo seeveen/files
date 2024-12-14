@@ -1,32 +1,51 @@
 /* 
-    Copyright © 2024 - spotify.css
-    - Written by https://github.com/seeveen
-    - version 0.1
-    - MIT License
-    - 12 December 2024
+    Spotify Feature - Version 1.0.0
+    Written: https://anilist.co/user/seeveen
+    Path: https://seeveen.github.io/files/anilist-css/spotify.css
+    Copyright © 2024 - MIT License
 */
 
+/* !~~ SETTINGS ~~! */
 :root {
-    --spotify-border: 2px rgba(163, 177, 198, 1) solid;
+    /* Background and border settings */
     --spotify-background: rgba(24, 36, 55, 1);
-    --spotify-api-url: url(https://spotify-github-profile.kittinanx.com/api/view?uid=31mn6bq6p4ipe5famdlblflhlt7a&cover_image=true&theme=natemoo-re&show_offline=true&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=true);
-    --spotify-logo-color: rgb(133, 150, 165);
+    --spotify-border: 2.3px rgba(163, 177, 198, 1) solid;
+    --spotify-border-radius: 4px;
+
+    /* API URL for currently playing track */
+    --spotify-url-api: url(null);
+
+    /* Animation settings */
+    --spotify-animation-name: rotation;
+    --spotify-animation-duration: 3s;
+    --spotify-animation-delay: 1s;
+
+    /* Sticker settings */
+    --spotify-sticker: url("https://files.catbox.moe/nou5cc.svg");
+    --spotify-sticker-color: rgb(133, 150, 165);
+
+    /* Offline image */
+    --spotify-offline: url("https://files.catbox.moe/zeq171.svg");
 }
 
+/* !~~ REMOVE GENRE TITLE ~~! */
+/* ~ Removes the genre section title ~ */
 .section > div:nth-child(3) > h2 {
     font-size: 0;
-    color: transparent;
 }
 
+/* !~~ ADD SPOTIFY TITLE ~~! */
+/* ~ Adds a custom title "Listening to Spotify" above the widget ~ */
 .section > div:nth-child(3) > h2:before {
-    content: "Listening to Spotify" !important;
+    content: 'Listening to Spotify';
+    font-size: 1.4rem;
     font-family: 'Overpass';
     font-weight: 700;
-    font-size: 1.4rem;
     color: rgb(var(--color-text));
-    display: inline-block;
 }
 
+/* !~~ REMOVE UNNECESSARY GENRE ELEMENTS ~~! */
+/* ~ Hides all genre elements except the first one ~ */
 .percentage-bar,
 .genres > div:not(:first-child) {
     display: none !important;
@@ -42,52 +61,93 @@
     font-size: 0 !important;
 }
 
+/* !~~ ADD SPOTIFY CONTAINER ~~! */
+/* ~ Adds a styled container for Spotify widget ~ */
 .genres > div:first-child:before {
     content: '';
-    height: 100px;
-    width: 330px;
     display: inline-block;
-    z-index: 3;
+    width: 330px;
+    height: 100px;
+    background-color: var(--spotify-background);
     border: var(--spotify-border);
-    border-radius: 2px;
+    border-radius: var(--spotify-border-radius);
     transform: scale(1.2);
     padding-top: 3px;
     margin-top: 11px;
-    background: var(--spotify-background) !important;
-}
-
-.genres > div:first-child:after {
-    content: var(--spotify-api-url);
-    transform: scale(1.2);
-    display: inline-block;
-    position: absolute;
-    background: var(--spotify-background) !important;
-    margin-left: -160px;
-    margin-top: -106px;
     z-index: 2;
 }
 
+/* !~~ DISPLAY OFFLINE STATE ~~! */
+/* ~ Shows an image when no music is playing ~ */
+.genres:before {
+    content: var(--spotify-offline) !important;
+    transform: scale(1.2);
+    display: inline-block;
+    position: absolute;
+    margin-left: 50px;
+    margin-top: 25px;
+    z-index: 3;
+}
+
+/* !~~ DISPLAY CURRENTLY PLAYING MUSIC ~~! */
+/* ~ Displays the currently playing track using Spotify API ~ */
+.genres > div:first-child:after {
+    content: var(--spotify-url-api);
+    background: var(--spotify-background) !important;
+    transform: scale(1.2);
+    display: inline-block;
+    position: absolute;
+    margin-left: -160px;
+    margin-top: -106px;
+    z-index: 5;
+}
+
+/* !~~ STICKERS ~~! */
+/* ~  Adds a sticker element with animations ~ */
 .genres:after {
     content: '';
-    mask: url("https://files.catbox.moe/s2558l.svg") no-repeat 50% 50%;
-    -webkit-mask: url("https://files.catbox.moe/s2558l.svg") no-repeat 50% 50%;
+    mask: var(--spotify-sticker) no-repeat 50% 50%;
+    -webkit-mask: var(--spotify-sticker) no-repeat 50% 50%;
     position: absolute;
     padding: 60px 67px;
-    background-color: var(--spotify-logo-color) !important;
+    background-color: var(--spotify-sticker-color) !important;
     box-shadow: 4px 7px 0px 0px rgba(0,0,0,0.1);
     margin-left: 297px;
     margin-top: -35px;
     overflow: overlay;
     transform: scale(0.3);
-    z-index: 7;
-    animation: rotation 3s linear infinite;
+    z-index: 6;
+
+    animation-name: var(--spotify-animation-name);
+    animation-delay: var(--spotify-animation-delay);
+    animation-duration: var(--spotify-animation-duration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
+/* !~~ KEYFRAMES ~~! */
+/* ~ Rotational animation for the sticker ~ */
 @keyframes rotation {
     0% {
-        transform: scale(0.3) rotate(0deg);
+        transform: scale(.3) rotate(0);
     }
+
     100% {
-        transform: scale(0.3) rotate(360deg);
+        transform: scale(.3) rotate(360deg);
+    }
+}
+
+/* ~ Floating animation for gentle vertical movement ~ */
+@keyframes float {
+    0% {
+        transform: scale(.3) translateY(0);
+    }
+
+    50% {
+        transform: scale(.3) translateY(-2px);
+    }
+
+    100% {
+        transform: scale(.3) translateY(0);
     }
 }
