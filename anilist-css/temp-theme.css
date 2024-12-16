@@ -1,0 +1,471 @@
+/* 
+    Personal theme - Version 1.0.0
+    Written: https://anilist.co/user/seeveen
+    to: https://anilist.co/user/seeveen
+    Copyright © 2024 - MIT License
+
+    - My temporary css theme
+*/
+
+@import url("https://anzuftnw.github.io/files/dehohification.css");
+@import url("https://seeveen.github.io/files/anilist-css/spotify.css");
+
+/* !~~ SETTINGS ~~! */
+.site-theme-dark,
+.site-theme-contrast,
+:root {
+     --color-background: 17, 17, 27;
+    --color-foreground: 24, 24, 37;
+    --color-foreground-dark: 30, 30, 46;
+    --color-border-foreground: 37, 37, 52;
+    --color-text: 245, 245, 245;
+    --color-primary: 144, 22, 22;
+    --apple-logo: url("https://files.catbox.moe/ajd5s6.png");
+
+    /* ~ History colors */
+    --history-lv1: 122, 10, 10;
+    --history-lv2: 144, 12, 12;
+    --history-lv3: 166, 14, 14;
+    --history-lv4: 188, 16, 16;
+    --history-lv5: 210, 18, 18;
+    --history-lv6: 232, 20, 20;
+    --history-lv7: 244, 22, 22;
+    --history-lv8: 255, 24, 24;
+    --history-lv9: 204, 0, 0;
+
+    /* ~ spotify ~ */
+    --spotify-background: rgba(21, 21, 34, 1);
+    --spotify-border: 2.3px rgba(41, 41, 61, 1) solid;
+    --spotify-url-api: url("https://spotify-github-profile.kittinanx.com/api/view?uid=31mn6bq6p4ipe5famdlblflhlt7a&cover_image=true&theme=natemoo-re&show_offline=false&background_color=121212&interchange=false&bar_color=53b14f&bar_color_cover=true");
+}
+
+/* !~~ General ~~! */
+body {
+    background: rgb(var(--color-background)) !important;
+}
+
+body::after {
+    content: '🧵 Temporary css theme by seeveen';
+    display: block;
+    position: fixed;
+    left: 12px;
+    bottom: 12px;
+    font-size: 14px;
+    font-family: "Overpass";
+    color: white;
+    z-index: 1000;
+}
+
+/* !~~ Navegation bar ~~! */
+#nav .transparent,
+#nav {
+    max-width: 78%;
+    left: calc((100% - 78%) / 2);
+    margin-top: 15px;
+    
+    background: rgb(var(--color-foreground)) !important;
+    border: 2px rgb(var(--color-border-foreground)) solid;
+    border-radius: 6px;
+    color: rgb(var(--color-text)) !important;
+    transition: .5s ease;
+}
+
+#nav .wrap {
+    margin-right: 12px !important;
+}
+
+/* ~ Widgets content ~ */
+#nav .wrap::after {
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgb(var(--color-foreground-dark)) !important;
+    border-radius: 21px;
+    width: 76px;
+    height: 36px;
+    top: 50%;
+    right: -16px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* ~ User content ~ */
+#nav > .user > .user-wrap,
+.user-wrap .avatar {
+    position: relative;
+    background-image: none !important;
+    z-index: 6;
+}
+
+.user-wrap .avatar::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.1);
+    display: block;
+    background: transparent !important;
+    width: 11px !important;
+    height: 11px !important;
+    border: 2px solid rgb(var(--color-primary)) !important;
+    transition: all 0.5s ease !important;
+    z-index: 8;
+}
+
+/* ~ User animation ~ */
+.user-wrap:hover .avatar::after {
+    background-color: rgb(var(--color-primary)) !important;
+    transform: translate(-50%, -50%) rotate(145deg) scale(1.1) !important;
+}
+
+/* ~ Disable chevron svg ~ */
+.chevron {
+    display: none;
+}
+
+/* !~~ Search wrap ~~! */
+.wrap .search {
+    margin: 0;
+}
+
+.search > [data-icon="search"] {
+    fill: rgb(var(--color-primary)) !important;
+    color: rgb(var(--color-primary)) !important;
+    transition: all 0.5s ease !important;
+}
+
+/* ~ Search animation ~ */
+.search > [data-icon="search"]:hover {
+    transform: scale(1.1);
+}
+
+/* !~~ Quick Search */
+.quick-search .input svg path,
+.fa-plus path,
+.fa-search path {
+    fill: rgb(var(--color-primary))
+}
+
+.quick-search .input {
+    fill: rgb(var(--color-primary)) !important;
+    color: rgb(var(--color-text));
+    background: var(--color-foreground);
+    box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.2);
+}
+
+.quick-search .input input {
+    color: rgb(var(--color-text));
+}
+
+.results .result-col {
+    background: rgb(var(--color-foreground-dark));
+    box-shadow: 3px 3px 0px 0px rgba(0,0,0,0.2);
+}
+
+.results .result-col .result:hover {
+    background: rgb(var(--color-primary));
+}
+
+/* !~~ Logo Image ~~! */
+.wrap > .logo > img {
+    opacity: 0;
+}
+
+.wrap > .logo {
+    content: var(--apple-logo);
+    width: 38px;
+    height: 45px;
+    animation: float 1.5s linear infinite;
+}
+
+.wrap > .logo:hover {
+    transform: scale(1.2);
+}
+
+/* !~~ Links & Dropdowns ~~! */
+.links .link:hover,
+.links .browse-wrap:hover {
+    color: rgb(var(--color-primary));
+    transition: color 0.5s ease;
+}
+
+/* ~ Dropdowns ~ */
+.dropdown::before,
+.dropdown::after {
+    color: rgb(var(--color-background)) !important;
+}
+
+.dropdown .primary-links,
+.dropdown .primary-links .primary-link {
+    color: rgb(var(--color-text));
+    background: rgb(var(--color-background));
+}
+
+.dropdown .footer {
+    background: rgb(var(--color-foreground-dark));
+    border-top: 1px rgb(var(--color-border-foreground)) solid;
+    color: rgb(var(--color-text)) !important;
+}
+
+.secondary-links a,
+.primary-link svg,
+.primary-link svg path {
+    color: rgb(var(--color-text)) !important;
+    fill: rgb(var(--color-text));
+}
+
+/* ~ Hovering animation ~ */
+.footer .secondary-link path:hover,
+.secondary-link:hover,
+.footer > a:hover,
+.footer a path:hover,
+.footer a:hover path  {
+    fill: rgb(var(--color-primary)) !important;
+    color: rgb(var(--color-primary)) !important;
+}
+
+.primary-link > section > .primary-link-text:hover,
+.secondary-links > a:hover,
+.primary-link > .label:hover {
+    color: rgb(var(--color-primary)) !important;
+    transition: color 0.5s ease;
+}
+
+.dropdown .primary-links:hover svg,
+.dropdown .primary-links .primary-link:hover svg path {
+    fill: rgb(var(--color-primary));
+    transition: fill 0.5s ease-in-out;
+}
+
+/* !~~ Header wrap ~~! */
+.header-wrap {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 3px solid rgb(var(--color-border-foreground));
+    border-radius: 6px;
+    margin-top: 10%;
+    width: 80%;
+    transition: transform 1.5s ease;
+    z-index: 1;
+}
+
+.header-wrap .banner {
+    z-index: -1;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+/* ~ navegation header ~ */
+.header-wrap .nav-wrap {
+    border-top: 3px solid rgb(var(--color-border-foreground));
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.nav-wrap .nav.container .link {
+    color: rgb(var(--color-text));
+    transition: 0.5s ease;
+}
+
+.nav-wrap .nav.container .link:hover,
+.nav-wrap .nav.container .link.router-link-active {
+    color: rgb(var(--color-primary)) !important;
+    transition: 0.5s ease;
+}
+
+/* ~ Avatar & name ~ */
+
+.banner-content .avatar {
+    position: relative;
+    z-index: 8;
+    max-width: 180px;
+    max-height: 180px;
+    border-radius: 50%;
+    border: 2px solid rgb(var(--color-foreground));
+    transform: translateY(-42%) !important;
+}
+
+.banner-content .name-wrapper {
+    transform: translate(0%, -220%) !important;
+}
+
+.banner-content .name-wrapper .name {
+    filter: none !important;
+    font-size: 2rem;
+}
+
+/* ~ actions ~ */
+.banner-content .actions {
+    position: relative;
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    transform: translate(-120px, -210%) !important;
+}
+
+.banner-content .actions .nav-btn {
+    background: rgb(var(--color-foreground-dark)) !important;
+    padding: 6px 43px;
+}
+
+/* !~~ Overview sections ~~! */
+.activity-history,
+.genres,
+.favourites-wrap.anime,
+.favourites-wrap.manga,
+.about .content-wrap {
+    background: rgb(var(--color-foreground)) !important;
+    border: 2px solid rgb(var(--color-border-foreground));
+}
+
+/* !~~ Stats anime and manga */
+.stats-wrap {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-auto-flow: row;
+    grid-row-gap: 20px;
+    padding: 20px 20px;
+    text-align: left;
+}
+
+.stats-wrap > .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats-wrap > .list-stats {
+    background: rgb(var(--color-foreground)) !important;
+    border: 2px solid rgb(var(--color-border-foreground));
+}
+
+.list-stats > .footer {
+    background: rgb(var(--color-border-foreground)) !important;
+    border-top: 1px solid rgb(var(--color-foreground-dark));
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1.5s ease;
+}
+
+.footer > .progress {
+    background: rgb(var(--color-foreground-dark)) !important;
+}
+
+.footer > .progress > .bar {
+    background: linear-gradient(90deg, rgba(192,54,57,1) 0%, rgba(116,32,34,1) 72%) !important;
+}
+
+.list-stats:nth-child(1):hover > .footer,
+.list-stats:nth-child(2):hover > .footer {
+    max-height: 55px;
+}
+
+.stats-wrap > .stat .value {
+    color: rgb(var(--color-primary));
+    font-size: 2rem;
+    padding-bottom: 0px;
+    font-weight: 600;
+}
+
+.stats-wrap > .stat > .label {
+    color: rgb(var(--color-text));
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding-bottom: 0px;
+}
+
+.stats-wrap > .stat:nth-child(1) {
+    grid-row-start: span 2;
+}
+
+.stats-wrap > .stat:nth-child(1) > .value {
+    font-size: 5.5rem;
+    font-weight: 700;
+}
+
+.stats-wrap > .stat:nth-child(1) > .label {
+    font-size: 2rem;
+}
+
+.stats-wrap > .stat:nth-child(n+2) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats-wrap > .stat:nth-child(n+2) > .value {
+    font-size: 2rem;
+}
+
+.stats-wrap > .stat:nth-child(n+2) > .label {
+    font-size: 1.1rem;
+}
+
+/* !~~ History Activity ~~! */
+.activity-history .history-day {
+    border-radius: 50%;
+}
+
+.activity-history .lv-0 {
+    background: rgb(17, 17, 28) !important;
+}
+
+.activity-history .lv-1 { background: rgb(var(--history-lv1)) !important; }
+.activity-history .lv-2 { background: rgb(var(--history-lv2)) !important; }
+.activity-history .lv-3 { background: rgb(var(--history-lv3)) !important; }
+.activity-history .lv-4 { background: rgb(var(--history-lv4)) !important; }
+.activity-history .lv-5 { background: rgb(var(--history-lv5)) !important; }
+.activity-history .lv-6 { background: rgb(var(--history-lv6)) !important; }
+.activity-history .lv-7 { background: rgb(var(--history-lv7)) !important; }
+.activity-history .lv-8 { background: rgb(var(--history-lv8)) !important; }
+.activity-history .lv-9 { background: rgb(var(--history-lv9)) !important; }
+
+/* !~~ Activity Feed ~~! */
+.activity-feed {
+    border-top: 4px solid rgb(var(--color-border-foreground));
+    padding-top: 12px !important;
+}
+
+.activity-entry .wrap .list.small {
+    border: 2px solid rgb(var(--color-border-foreground))
+}
+
+.activity-entry .wrap .details .status,
+.wrap > .list.small > .cover { transition: all .5s ease;}
+
+.wrap:hover > .list.small > .cover {
+    margin-right: 50px !important;
+    transition: all .5s ease;
+}
+
+.activity-entry .wrap:hover .details .status {
+    transform: scale(1.04);
+    margin-left: -42px;
+    transition: 1s;
+}
+
+/* !~~ Footer ~~! */
+.wrap > .footer {
+    background: rgb(var(--color-foreground-dark));
+    border-top: 3px solid rgb(var(--color-border-foreground));
+}
+
+.theme-selector h2,
+.wrap > .footer .container .links section a:hover {
+    color: rgb(var(--color-primary));
+}
+
+/* !~~ Animations ~~! */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
