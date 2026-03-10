@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Cidadão Dorminhoco RP",
+    "description": "Render/cliente do cidadão com humanoid + Steve.",
+    "uuid": "568c8954-9292-4ea9-9409-d7961ec6aa74",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 0]
+  },
+  "modules": [
+    {
+      "description": "resources module",
+      "type": "resources",
+      "uuid": "abfba59e-5678-40fe-9ab4-d10debe3fe6e",
+      "version": [1, 0, 0]
+    }
+  ]
+}
